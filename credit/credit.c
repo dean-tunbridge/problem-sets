@@ -3,6 +3,7 @@
 
 int get_card_length(long card_number);
 bool luhn_algorithm(long card_number);
+char *card_type(long card_number);
 
 int main(void)
 {
@@ -12,12 +13,14 @@ int main(void)
     card_number = get_long("Number: ");
   } while (card_number < 1);
 
-  if (get_card_length(card_number) < 12 || get_card_length(card_number) > 19)
-    printf("INVALID");
-
-  if (!luhn_algorithm(card_number))
+  if (!luhn_algorithm(card_number) || get_card_length(card_number) < 12 ||
+      get_card_length(card_number) > 19)
   {
-    printf("INVALID");
+    printf("INVALID\n");
+  }
+  else
+  {
+    printf("%s", card_type(card_number));
   }
 }
 
@@ -62,4 +65,30 @@ bool luhn_algorithm(long card_number)
     sum += digit;
   }
   return sum % 10 == 0;
+}
+
+// CARD TYPE //
+char *card_type(long card_number)
+{
+  long digits = card_number;
+  char *card_type_result = "";
+
+  while (digits > 99)
+  {
+    digits /= 10;
+  }
+
+  if (digits == 37)
+  {
+    card_type_result = "AMEX\n";
+  }
+  else if (digits == 22 || digits == 55 || digits == 51)
+  {
+    card_type_result = "MASTERCARD\n";
+  }
+  else
+
+    card_type_result = "VISA\n";
+
+  return card_type_result;
 }
