@@ -20,10 +20,18 @@ int main(void)
       printf(" ");
     }
 
+    for (int k = 0; k < row; k++)
+    {
+      printf("#");
+    }
+
+    printf("  ");
+
     for (int j = 0; j < row; j++)
     {
       printf("#");
     }
+
     printf("\n");
   }
 }
