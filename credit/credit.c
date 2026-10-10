@@ -71,7 +71,7 @@ bool luhn_algorithm(long card_number)
 char *card_type(long card_number)
 {
   long digits = card_number;
-  char *card_type_result = "";
+  char *card_type_result = "INVALID\n";
 
   while (digits > 99)
   {
@@ -86,9 +86,10 @@ char *card_type(long card_number)
   {
     card_type_result = "MASTERCARD\n";
   }
-  else
-
+  else if (digits == 40 || digits == 41 || digits == 42 || digits == 49)
+  {
     card_type_result = "VISA\n";
+  }
 
   return card_type_result;
 }
