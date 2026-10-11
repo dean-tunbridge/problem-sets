@@ -1,11 +1,12 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
 CS50_DIR = ..
+FILE_NAME = hello
 
-hello: hello.c $(CS50_DIR)/cs50.c $(CS50_DIR)/cs50.h
-	$(CC) $(CFLAGS) -I$(CS50_DIR) hello.c $(CS50_DIR)/cs50.c -o hello
+hello: $(FILE_NAME).c $(CS50_DIR)/cs50.c $(CS50_DIR)/cs50.h
+	$(CC) $(CFLAGS) -I$(CS50_DIR) $(FILE_NAME).c $(CS50_DIR)/cs50.c -o $(FILE_NAME)
 
 clean:
-	rm -f hello
+	rm -f $(FILE_NAME)
 
 .PHONY: clean
