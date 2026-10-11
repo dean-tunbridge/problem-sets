@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
-CS50_DIR = /home/dean/cs50
+CS50_DIR = .
 
 %:
 	@if [ -f "$@/$@.c" ]; then \
